@@ -7,6 +7,7 @@ Brute force Bitcoin private keys random
 - [Как создать базу адресов adresses-160-sort.bin ](https://github.com/phrutis/Rotor/issues/1)
 - [Зачем нужны файлы START.bat и Next.bat](https://github.com/phrutis/Rotor/issues/2)
 - [Гипотеза - Почему Random лучше перебора ](https://github.com/phrutis/Rotor/issues/3)
+- [RTX3900 выдает ошибку CL_MEM_OBJECT_ALLOCATION_FAILURE](https://github.com/phrutis/Rotor/issues/5)
 ## Параметры:
 ```
 Rotor.exe -h
@@ -24,9 +25,9 @@ Options:
     -h, --help             Shows this page
 ```
 
-## Пример работы:
+## Пример работы Rotor.exe
 ```
-Rotor.exe -m 1 -f address6-160-sorted.bin
+C:\Users\user>Rotor.exe -m 1 -f 10.bin
 
 ARGUMENTS:
         PLATFORM ID: 0[default: 0]
@@ -37,47 +38,104 @@ ARGUMENTS:
         ADDR_MODE  : 1[0: uncompressed, 1: compressed, 2: both]
         UNLIM ROUND: 0
         PKEY BASE  :
-        BIN FILE   : address6-160-sorted.bin
+        BIN FILE   : 10.bin
 
-Loading addresses: 100 %
-Loaded addresses : 195855350 in 171.433410 sec
+Загрузка адресов   : 100 %
+Загруженно адресов : 90693 за 0,149708 сек.
 
-Bloom at 000001B68EAF0430
+Bloom at 000002075FE48F20
         Version    : 2.1
-        Entries    : 391710700
-        Error      : 0.0000100000
-        Bits       : 9386424816
-        Bits/Elem  : 23.962646
-        Bytes      : 1173303102 (1118 MB)
+        Entries    : 181386
+        Error      : 0,0000100000
+        Bits       : 4346488
+        Bits/Elem  : 23,962646
+        Bytes      : 543311 (0 MB)
         Hash funcs : 17
 
 Loading program file: gpu.cl
 
 
 MATRIX:
-        Grid size  : 3584x4096
-        Total      : 14680064
-        Mod inverse: 14336 threads [1024 ops/thread]
+        Grid size  : 4608x4096
+        Total      : 18874368
+        Mod inverse: 36864 threads [512 ops/thread]
 
 DEVICE INFO:
-        Device              : GeForce GTX 1650
+        Device              : NVIDIA GeForce RTX 2070
         Vendor              : NVIDIA Corporation (10de)
-        Driver              : 461.40
+        Driver              : 471.41
         Profile             : FULL_PROFILE
-        Version             : OpenCL 1.2 CUDA
-        Max compute units   : 14
+        Version             : OpenCL 3.0 CUDA
+        Max compute units   : 36
         Max workgroup size  : 1024
-        Global memory       : 4294967296
-        Max allocation      : 1073741824
+        Global memory       : 8589934592
+        Max allocation      : 2147483648
+
+        Project Rotor v1.01 : https://github.com/phrutis/Rotor
+        Donate BitCoin      : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 
 
-Iteration 1 at [2021-03-20 00:10:01] from: af34b0f60ded1c5597e31d5ed65a27755f3621e7ed3b3ecb3151fb9fbada2dcd
-[af34b0f60ded1c5597e31d5ed65a27755f3621e7ed3b3ecb3151fba04c1a2dcd] [round 167: 0.21s (69.28 Mkey/s)] [total 2,451,570,688 (65.94 Mkey/s)]
+Iteration 1 at [2021-08-04 00:03:44] from: e75a05bacbec700fc730c33300f8cb04d670e5e21890af307eb0d07857ebb82e
+[e75a05bacbec700fc730c33300f8cb04d670e5e21890af307eb0d079562bb82e] [round 227: 0,13s (143,39 Mkey/s)] [total 4,284,481,536 (148,13 Mkey/s)]
+Iteration 2 at [2021-08-04 00:04:12] from: 7e095d787dd2f6cef6c1b98bf06d47b1ebbb41385bddb285b4ba6b022293eeb7
+[7e095d787dd2f6cef6c1b98bf06d47b1ebbb41385bddb285b4ba6b0320d3eeb7] [round 227: 0,12s (161,75 Mkey/s)] [total 8,568,963,072 (149,81 Mkey/s)]
+Iteration 3 at [2021-08-04 00:04:40] from: d6925a4f22342e0d44ddcd36fe06d9dc6852540d54a451f302d08b788d8ecdc4
+[d6925a4f22342e0d44ddcd36fe06d9dc6852540d54a451f302d08b78cececdc4] [round 59: 0,12s (161,75 Mkey/s)] [total 9,682,550,784 (150,34 Mkey/s)]
 
 ```
-# Rotor2
+# Пример работы Rotor2.exe
+```
+C:\Users\user>Rotor2.exe -m 1 -f 01.bin
+
+ARGUMENTS:
+        PLATFORM ID: 0[default: 0]
+        DEVICE ID  : 0[default: 0]
+        NUM ROWS   : 0[default: 0(auto)]
+        NUM COLS   : 0[default: 0(auto)]
+        INVSIZE    : 0[default: 0(auto)]
+        ADDR_MODE  : 1[0: uncompressed, 1: compressed, 2: both]
+        UNLIM ROUND: 0
+        PKEY BASE  :
+        BIN FILE   : 01.bin
+
+Загрузка адресов   : 100 %
+Загруженно адресов : 1326779 за 1,159541 сек.
+
+Bloom at 0000026FE9D68A70
+        Version    : 2.1
+        Entries    : 2653558
+        Error      : 0,0000100000
+        Bits       : 63586270
+        Bits/Elem  : 23,962646
+        Bytes      : 7948284 (7 MB)
+        Hash funcs : 17
+
+Loading program file: gpu.cl
+
+
+MATRIX:
+        Grid size  : 4608x4096
+        Total      : 18874368
+        Mod inverse: 36864 threads [512 ops/thread]
+
+DEVICE INFO:
+        Device              : NVIDIA GeForce RTX 2070
+        Vendor              : NVIDIA Corporation (10de)
+        Driver              : 471.41
+        Profile             : FULL_PROFILE
+        Version             : OpenCL 3.0 CUDA
+        Max compute units   : 36
+        Max workgroup size  : 1024
+        Global memory       : 8589934592
+        Max allocation      : 2147483648
+        Random              : Каждую секунду + 100-150 млн. значений
+        Project Rotor v1.02 : https://github.com/phrutis/Rotor
+        Donate BitCoin      : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
+
+[45d981bde0162b3ca4126d211230de3a962f71058e85cea0249d2db958c151ec] (175,23 Mkey/s) [total: 10,060,038,144]
+```
 ## Изминения:
-- Изменино время рандома. Выставил генерацию нового хэша каждые 1 сек. (было ~ 2-3 минуты) К новому хэшу добавляется значения +70-150 млн.
+- Изменино время рандома. Выставил генерацию нового хэша каждые 1 сек. (было ~ 2-3 минуты или 4,284,481,536) К новому хэшу добавляется значения +70-150 млн.
 - Для удобства использования убрано отображение "Iteration 1 at [дата, время] from: xxxxxxxxxxxxxxxx" которое переносилось на новую строку и засоряло экран.
 - Зафиксирована коретка printf, теперь после обновления нового хэша строка остается на месте.
 - При использовании большого файла адресов (25млн.) в режиме both происходят ложные срабатывания найденых хэшей. Примерно 20-30 ложных адресов на 2.000.000.000 хэшей в связи с этим отключил вывод информации о найденом хэше на экран.
@@ -85,14 +143,64 @@ Iteration 1 at [2021-03-20 00:10:01] from: af34b0f60ded1c5597e31d5ed65a27755f362
 - Сделано это для удобства, копируем адреса из файла Found.txt вставляем в окно проверки адресов списком на сайте. К примеру на сайтах https://www.homebitcoin.com/easybalance/ или https://bitcoindata.science/bitcoin-balance-check.html или http://addresschecker.eu можете найти свои сайты для проверски списком. Желательно проверять на двух разных сайтах, для точности.
 - Файл gpu.cl нужен, без него не работает!
 
-# Rotor3
+# Пример работы Rotor3.exe
+```
+C:\Users\user>Rotor3.exe -m 1 -f 10.bin
+
+ARGUMENTS:
+        PLATFORM ID: 0[default: 0]
+        DEVICE ID  : 0[default: 0]
+        NUM ROWS   : 0[default: 0(auto)]
+        NUM COLS   : 0[default: 0(auto)]
+        INVSIZE    : 0[default: 0(auto)]
+        ADDR_MODE  : 1[0: uncompressed, 1: compressed, 2: both]
+        UNLIM ROUND: 0
+        PKEY BASE  :
+        BIN FILE   : 10.bin
+
+Загрузка адресов   : 100 %
+Загруженно адресов : 90693 за 0,141924 сек.
+
+Bloom at 0000022E5ADC9210
+        Version    : 2.1
+        Entries    : 181386
+        Error      : 0,0000100000
+        Bits       : 4346488
+        Bits/Elem  : 23,962646
+        Bytes      : 543311 (0 MB)
+        Hash funcs : 17
+
+Loading program file: gpu.cl
+Compiling CL, can take minutes...
+
+MATRIX:
+        Grid size  : 4608x4096
+        Total      : 18874368
+        Mod inverse: 36864 threads [512 ops/thread]
+
+DEVICE INFO:
+        Device              : NVIDIA GeForce RTX 2070
+        Vendor              : NVIDIA Corporation (10de)
+        Driver              : 471.41
+        Profile             : FULL_PROFILE
+        Version             : OpenCL 3.0 CUDA
+        Max compute units   : 36
+        Max workgroup size  : 1024
+        Global memory       : 8589934592
+        Max allocation      : 2147483648
+        Random              : Full
+        Project Rotor v1.03 : https://github.com/phrutis/Rotor
+        Donate BitCoin      : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
+
+[6971a5815b3435e6a86c0cfe1fd0d7cbc396b7a58e3a67af6c3100fee9fee765] (180,23 Mkey/s) [total: 4,190,109,696]
+```
 ## Изминения:
 - Полный рандом. Возможно к новому хэшу добавляется +1 значение
 - Файл gpu.cl нужен, без него не работает!
 
-# Rotor10xxxxxxxx
+# Rotor100000000000.exe
 ## Изминения:
-- Генерация нового хэша происходит после 10.000.000... значений указаных в названии
+- Генерация нового хэша происходит после total: 1.000.000.000... число указанное в названии файла.
 - Файл gpu.cl нужен, без него не работает!
 
 ## Donation
