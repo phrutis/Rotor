@@ -2,12 +2,16 @@ Brute force Bitcoin private keys random
 ![alt text](Others/2.jpg "Rotor")
 # Rotor
 Это модифицированная версия [oclexplorer](https://github.com/svtrostov/oclexplorer) от svtrostov.
-
-# Часто задаваемые вопросы:
-- [Как создать базу адресов adresses-160-sort.bin ](https://github.com/phrutis/Rotor/issues/1)
-- [Зачем нужны файлы START.bat и Next.bat](https://github.com/phrutis/Rotor/issues/2)
-- [Гипотеза - Почему Random лучше перебора ](https://github.com/phrutis/Rotor/issues/3)
+## Примечания:  
+- [Как создать базу адресов .bin ?](https://github.com/phrutis/Rotor/issues/1) 
+- [Гипотеза - Почему Random лучше перебора](https://github.com/phrutis/Rotor/issues/3)
+- Для работы программы нужно преобразовать Legacy адреса (которые начинаются на 1) в бинарные хэши160 RIPEMD160. 
+- Для преобразования используйте программу [b58dec](https://github.com/phrutis/Rotor/blob/main/Others/b58dec.exe) ```Команда: b58dec.exe 1.txt 2.bin```
+- Важно выполнить сортировку файла 2.bin Иначе Bloom фильтр поиска не будет работать должным образом. 
+- Что бы отсортировать 2.bin используйте программу [RMD160-Sort](https://github.com/phrutis/Rotor/blob/main/Others/RMD160-Sort.exe) ```Команда: RMD160-Sort.exe 2.bin addresse160-Sort.bin```
+- Минимальное количество хешей160 в addresse160-Sort.bin должно быть не менее 1000! 
 - [RTX3900 выдает ошибку CL_MEM_OBJECT_ALLOCATION_FAILURE](https://github.com/phrutis/Rotor/issues/5)
+- [Зачем нужны файлы START.bat и Next.bat](https://github.com/phrutis/Rotor/issues/2)
 ## Параметры:
 ```
 Rotor.exe -h
@@ -141,7 +145,8 @@ DEVICE INFO:
 - При использовании большого файла адресов (25млн. и больше) в режиме both происходят ложноположительные срабатывания найденых адресов. Примерно 20 ложных адресов на 20.000.000.000 хешей. В связи с этим отключил вывод информации о найденом хэше на экран.
 - Для удобства сделал вывод в 2 файла Found.txt и BASE.txt 
 - В файле Found.txt только адреса, в файле BASE.txt вся информация.
-- Сделано это для удобства, копируем адреса из файла Found.txt и вставляем их в окно проверки адресов списком на сайте. К примеру на сайтах: https://www.homebitcoin.com/easybalance/ или https://bitcoindata.science/bitcoin-balance-check.html или http://addresschecker.eu можете найти свои сайты для проверски списком. Желательно проверять на двух разных сайтах, для точности.
+- Сделано это для удобства, копируем адреса из файла Found.txt и вставляем их в окно проверки адресов списком на сайте. К примеру на сайтах: https://www.homebitcoin.com/easybalance/ или https://bitcoindata.science/bitcoin-balance-check.html или http://addresschecker.eu 
+- Можете найти свои сайты для проверски списком. Желательно проверять на двух разных сайтах, для точности.
 - Файл gpu.cl нужен, без него не работает!
 - С базой до 5.000.000 адресов, ложноположительные срабатывания не обнаружены.
 # Пример работы Rotor3.exe (FULL RANDOM)
@@ -198,11 +203,5 @@ DEVICE INFO:
 ## Изминения:
 - Полный рандом! Каждый хеш новый. 
 - Файл gpu.cl нужен, без него не работает!
-
-# Rotor1000000000.exe
-## Изминения:
-- Генерация нового хеша происходит после total: 1.000.000.000... (число указанное в названии файла).
-- Файл gpu.cl нужен, без него не работает!
-
 ## Donation
 - BTC: bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
