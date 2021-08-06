@@ -1,16 +1,17 @@
 Brute force Bitcoin private keys random 
 ![alt text](Others/2.jpg "Rotor")
-# Rotor
+# Rotor (OpenCL)
 Это модифицированная версия [oclexplorer](https://github.com/svtrostov/oclexplorer) от svtrostov.
+Огромная благодарность [kanhavishva](https://github.com/kanhavishva) и всем разработчикам, чьи коды были использованы в Rotor OpenCL
 ## Примечания:  
-- [Как создать базу адресов .bin ?](https://github.com/phrutis/Rotor/issues/1) 
+- [Пошагово как создать базу адресов addresse160-Sort.bin или скачать](https://github.com/phrutis/Rotor/issues/1) 
 - [Гипотеза - Почему Random лучше перебора](https://github.com/phrutis/Rotor/issues/3)
 - Для работы программы нужно преобразовать Legacy адреса (которые начинаются на 1) в бинарные хэши160 RIPEMD160. 
 - Для преобразования используйте программу [b58dec](https://github.com/phrutis/Rotor/blob/main/Others/b58dec.exe) ```Команда: b58dec.exe 1.txt 2.bin```
 - Важно выполнить сортировку файла 2.bin Иначе Bloom фильтр поиска не будет работать должным образом. 
 - Что бы отсортировать 2.bin используйте программу [RMD160-Sort](https://github.com/phrutis/Rotor/blob/main/Others/RMD160-Sort.exe) ```Команда: RMD160-Sort.exe 2.bin addresse160-Sort.bin```
 - Минимальное количество хешей160 в addresse160-Sort.bin должно быть не менее 1000! 
-- [RTX3900 выдает ошибку CL_MEM_OBJECT_ALLOCATION_FAILURE](https://github.com/phrutis/Rotor/issues/5)
+- [RTX3900, RTX3080 решение ошибки CL_MEM_OBJECT_ALLOCATION_FAILURE](https://github.com/phrutis/Rotor/issues/5)
 - [Зачем нужны файлы START.bat и Next.bat](https://github.com/phrutis/Rotor/issues/2)
 ## Параметры:
 ```
@@ -203,5 +204,8 @@ DEVICE INFO:
 ## Изминения:
 - Полный рандом! Каждый хеш новый. 
 - Файл gpu.cl нужен, без него не работает!
+## Собрать проект
+- Microsoft Visual Studio Community 2019
+- OpenCL 1.2
 ## Donation
 - BTC: bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
